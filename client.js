@@ -9,8 +9,9 @@ const net = require('net');
   });
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
+
   conn.on('connect', () => {
-    conn.write('Hello from the player!');
+    conn.write('Name: ANH');
   });
   
   conn.on('data', (data) => {
