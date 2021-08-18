@@ -1,30 +1,8 @@
 // IP: 10.0.2.15 PORT: 50541   
 
 const connect = require ('./client');
+const setupInput = require ('./input');
 
-const handleUserInput = (key) => {
-  if(key === '\u0003') {  // Exit with ctrl c
-    console.log('Goodbye!');
-    process.exit();
-  } else {
-    return key;
-  }
-};
-/**
- * Setup User Interface 
- * Specifically, so that we can handle user input via stdin
- */
- const setupInput = function() {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding('utf8');
-  stdin.resume();
-  
-  stdin.on('data', data => {
-    return handleUserInput(data);
-  });
-}
-
-console.log('Connecting ...');clearInterval
+console.log('Connecting ...');
 connect();
 setupInput();
