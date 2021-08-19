@@ -8,11 +8,7 @@ This is simply a multiplayer take on the genre.
 Before you can run this client, you will need to be running the server side which you can download and install from here. 
 
 ## Final Product
-Snake movement:
-!["screenshot description"](#)Snake Movement.png
-
-Snake messaging:
-!["screenshot description"](#)Snake Messaging.png
+Snake Movement: ![Snake Movement](https://github.com/kimanhtong/snake-client/blob/master/Snake%20Movement.png), Snake Messaging: ![Snake Messaging](https://github.com/kimanhtong/snake-client/blob/master/Snake%20Messaging.png)
 
 
 ## Getting Started
