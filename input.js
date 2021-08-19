@@ -7,19 +7,25 @@ const handleUserInput = (msg) => {
   let msgUpCase = msg.toUpperCase();
   let movement = ['W', 'A', 'S', 'D'];
   if (movement.indexOf(msgUpCase) > -1) {
-    msgUpCase === 'W' ? console.log('up') : 
-    msgUpCase === 'A' ? console.log('left') :
-    msgUpCase === 'S' ? console.log('down') :
-    msgUpCase === 'D' ? console.log('right') : console.log('');
-    return;
+    switch(msgUpCase) {
+      case 'W':
+        connection.write('Move: up')
+        break;
+      case 'A':
+        connection.write('Move: left')
+        break;
+      case 'S':
+        connection.write('Move: down')
+        break;
+      case 'D':
+        connection.write('Move: right')
+        break;
+    }
   }
 
   let chat = ['OMG', 'IDK', 'LMK', 'NVM', 'OFC', 'HLA', 'HRU', 'HMU'];
   if (chat.indexOf(msgUpCase) > -1) {
     connection.write(`Say: ${msgUpCase}`);
-    /*connection.on('connect', () => {
-      connection.write(`Say: ${msgUpCase}`);
-    });*/
   }
   return msg;
 };
