@@ -1,22 +1,27 @@
 let connection;
-const handleUserInput = (key) => {
-  if (key === '\u0003') {  // Exit with ctrl c
+const handleUserInput = (msg) => {
+  if (msg === '\u0003') {  // Exit with ctrl c
     console.log('Goodbye!');
     process.exit();
   }
-  if (key === 'w') { // Move up with w
-    console.log('up')
+  let msgUpCase = msg.toUpperCase();
+  let movement = ['W', 'A', 'S', 'D'];
+  if (movement.indexOf(msgUpCase) > -1) {
+    msgUpCase === 'W' ? console.log('up') : 
+    msgUpCase === 'A' ? console.log('left') :
+    msgUpCase === 'S' ? console.log('down') :
+    msgUpCase === 'D' ? console.log('right') : console.log('');
+    return;
   }
-  if (key === 'a') { // Move left with a
-    console.log('left')
+
+  let chat = ['OMG', 'IDK', 'LMK', 'NVM', 'OFC', 'HLA', 'HRU', 'HMU'];
+  if (chat.indexOf(msgUpCase) > -1) {
+    connection.write(`Say: ${msgUpCase}`);
+    /*connection.on('connect', () => {
+      connection.write(`Say: ${msgUpCase}`);
+    });*/
   }
-  if (key === 's') { // Move down with s
-    console.log('down')
-  }
-  if (key === 'd') { // Move right with d
-    console.log('right')
-  }
-  return key;
+  return msg;
 };
 /**
  * Setup User Interface 
@@ -29,9 +34,10 @@ const setupInput = function(conn) {
   stdin.setEncoding('utf8');
   stdin.resume();
   
-  stdin.on('data', data => {
+  stdin.on('data', (data) => {
     return handleUserInput(data);
   });
+
 }
 
 module.exports = setupInput;
