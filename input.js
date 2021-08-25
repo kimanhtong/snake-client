@@ -5,30 +5,31 @@ const handleUserInput = (msg) => {
     process.exit();
   }
   let msgUpCase = msg.toUpperCase();
-  let movement = ['W', 'A', 'S', 'D'];
-  if (movement.indexOf(msgUpCase) > -1) {
-    switch(msgUpCase) {
-      case 'W':
-        connection.write('Move: up')
-        break;
-      case 'A':
-        connection.write('Move: left')
-        break;
-      case 'S':
-        connection.write('Move: down')
-        break;
-      case 'D':
-        connection.write('Move: right')
-        break;
-    }
+  let movement = {
+    W: 'up',
+    A: 'left',
+    S: 'down',
+    D: 'right'
+  };
+  if (Object.keys(movement).indexOf(msgUpCase) > -1) {
+    connection.write(`Move: ${movement[msgUpCase]}`);
   }
 
-  let chat = ['OMG', 'IDK', 'LMK', 'NVM', 'OFC', 'HLA', 'HRU', 'HMU'];
-  if (chat.indexOf(msgUpCase) > -1) {
-    connection.write(`Say: ${msgUpCase}`);
-  }
-  return msg;
-};
+  let chat = {
+    OMG: 'Oh My God!',
+    IDK: 'I don\'t know.',
+    LMK: 'Let me know.',
+    NVM: 'Never mind!',
+    OFC: 'Of course',
+    HL: 'Hello!',
+    HRU: 'How are you?',
+    G2G: 'I\'ve got to go.',
+    SUS: 'See you soon!'
+  };
+  if (Object.keys(chat).indexOf(msgUpCase) > -1) {
+    connection.write(`Say: ${chat[msgUpCase]}`);
+  };
+}
 /**
  * Setup User Interface 
  * Specifically, so that we can handle user input via stdin
